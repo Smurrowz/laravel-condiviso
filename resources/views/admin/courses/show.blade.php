@@ -2,10 +2,10 @@
 @section('content')
 <div class="container ">
   <h1 class="text-primary text-center">{{$course['name']}}</h1>
-  <span class="text-secondary text-center">{{$course['period']}} -</span>
-  <span class="text-secondary text-center">{{$course['year']}} -</span>
-  <span class="text-secondary text-center">{{$course['cfu']}} -</span>
-  <span class="text-secondary text-center">{{$course['website']}} -</span>
+  <span class="text-secondary text-center"> <strong>Periodo :</strong>  {{$course['period']}} -</span>
+  <span class="text-secondary text-center"> <strong>Anno :</strong>  {{$course['year']}} -</span>
+  <span class="text-secondary text-center"> <strong>Crediti :</strong>{{$course['cfu']}} -</span>
+  <span class="text-secondary text-center"> <strong> Sito Web :</strong>{{$course['website']}} </span>
   
   <div class="d-flex justify-content-around m-4" >
     <p>Creato il: {{$course['created_at']}} </p>

@@ -22,15 +22,15 @@
                 @foreach ($courses as $course)
                 <tr>
                   <th scope="row">{{$course['id']}}</th>
-                  <td>{{$post['name']}}</td>
-                  <td>{{$post['period']}}</td>
-                  <td>{{$post['year']}}</td>
-                  <td>{{$post['cfu']}}</td>
-                  <td>{{$post['website']}}</td>
-                  <td><th scope="col"><a class="btn btn-primary" href="{{route('admin.courses.show', $post)}}" role="button">Vedi</a></th> 
-                  <td><th scope="col"><a class="btn btn-success" href="{{route('admin.courses.edit', $post)}}" role="button">Modifica</a></th>                   
+                  <td>{{$course['name']}}</td>
+                  <td>{{$course['period']}}</td>
+                  <td>{{$course['year']}}</td>
+                  <td>{{$course['cfu']}}</td>
+                  <td>{{$course['website']}}</td>
+                  <td><th scope="col"><a class="btn btn-primary" href="{{route('admin.courses.show', $course)}}" role="button">Vedi</a></th> 
+                  <td><th scope="col"><a class="btn btn-success" href="{{route('admin.courses.edit', $course)}}" role="button">Modifica</a></th>                   
                   <td><th scope="col">
-                    <form action="{{route('admin.course.destroy', $post)}}" method="POST">
+                    <form action="{{route('admin.courses.destroy', $course)}}" method="POST">
                       @csrf
                       @method('DELETE')
                       <input type="submit" value="! CANCELLA !" class="btn btn-danger">
