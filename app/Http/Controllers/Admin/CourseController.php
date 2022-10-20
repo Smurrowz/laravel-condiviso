@@ -26,7 +26,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.courses.create');
     }
 
     /**
@@ -37,7 +37,17 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $params = $request->validate([
+            'name' => 'required|max:255|min:3',
+            'description' => 'nullable',
+            'period' => 'required',
+            'year' => 'required|numeric',
+            'cfu' => 'required|numeric|min:1|max:50',
+            'website' => 'url|nullable'
+        ]);
+        
+        $course = Course::create($params);
+        return redirect()->route('admin.courses.show',$course);
     }
 
     /**
