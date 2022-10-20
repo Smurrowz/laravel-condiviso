@@ -15,7 +15,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::limit(30)->get();
+        return view('admin.courses.index',compact('courses'));
     }
 
     /**
@@ -47,7 +48,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return view('admin.courses.show', compact('course'));
     }
 
     /**
