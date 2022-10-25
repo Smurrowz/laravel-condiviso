@@ -16,7 +16,7 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::limit(30)->get();
-        return view('admin.courses.index',compact('courses'));
+        return view('admin.courses.index', compact('courses'));
     }
 
     /**
@@ -45,9 +45,9 @@ class CourseController extends Controller
             'cfu' => 'required|numeric|min:1|max:50',
             'website' => 'url|nullable'
         ]);
-        
+
         $course = Course::create($params);
-        return redirect()->route('admin.courses.show',$course);
+        return redirect()->route('admin.courses.show', $course);
     }
 
     /**
@@ -69,7 +69,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        return view('admin.courses.edit', compact('course'));
     }
 
     /**
@@ -81,7 +81,18 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        $params = $request->validate([
+            'name' => 'required|max:255|min:3',
+            'description' => 'nullable',
+            'period' => 'required',
+            'year' => 'required|numeric',
+            'cfu' => 'required|numeric|min:1|max:50',
+            'website' => 'url|nullable'
+        ]);
+
+        $course->update($params);
+
+        return redirect()->route('admin.courses.show', $course);
     }
 
     /**
@@ -92,6 +103,8 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+
+        return redirect()->route('admin.courses.index');
     }
 }
