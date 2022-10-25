@@ -1,6 +1,7 @@
 <?php
 
 use App\Course;
+use App\Degree;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 
@@ -13,6 +14,8 @@ class CourseSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        $degreeIds = Degree::all()->pluck('id');
+
         for ($i = 0; $i < 200; $i++) {
             $website = $faker->optional()->domainName();
 
@@ -23,6 +26,7 @@ class CourseSeeder extends Seeder
             $c->year = $faker->randomElement([1, 2, 3, 4, 5, 6]);
             $c->cfu = $faker->randomElement([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20, 30]);
             $c->website = $website ? "https://$website" : $website;
+            $c->degree_id = $faker->randomElement($degreeIds);
 
             $c->save();
         }
