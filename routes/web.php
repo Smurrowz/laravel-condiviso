@@ -29,4 +29,5 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/home', 'HomeController@index')->name('home');
         Route::resource('courses', 'CourseController');
+        Route::resource('degrees', 'DegreeController');
     });

@@ -13,5 +13,11 @@ class Course extends Model
         'year',
         'cfu',
         'website',
+        'degree_id'
     ];
+
+    public function degree()
+    {
+        return $this->belongsTo('App\Degree');
+    }
 }
